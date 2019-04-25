@@ -31,16 +31,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view) {
-        new EndpointsAsyncTask(new JokeCallback() {
-            @Override public void jokeResult(String joke) {
-                Intent intent = new Intent(MainActivity.this, JokeActivity.class);
-                intent.putExtra("JOKE", joke);
-                startActivity(intent);
-            }
-        }).execute("Cinthia");
-    }
-
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
