@@ -7,3 +7,5 @@
 /captures
 .idea
 *.iml
+backend/build/classes
+backend/build

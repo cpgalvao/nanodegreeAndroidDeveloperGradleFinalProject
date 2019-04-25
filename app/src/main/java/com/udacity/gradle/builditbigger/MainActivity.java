@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import br.com.uol.jokedisplay.JokeActivity;
-import br.com.uol.joketellinglibrary.Joke;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        String joke = new Joke().getJoke();
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra("JOKE", joke);
-        startActivity(intent);
+        new EndpointsAsyncTask(new JokeCallback() {
+            @Override public void jokeResult(String joke) {
+                Intent intent = new Intent(MainActivity.this, JokeActivity.class);
+                intent.putExtra("JOKE", joke);
+                startActivity(intent);
+            }
+        }).execute("Cinthia");
     }
 
     @Override protected void onCreate(Bundle savedInstanceState) {
