@@ -66,3 +66,9 @@ dependencies {
     implementation project(path: ':jokedisplay')
     implementation project(path: ':backend')
 }
+
+task runTests {
+    dependsOn ":backend:appengineStart", ":app:connectedAndroidTest"
+    mustRunAfter ":backend:appengineStart"
+    finalizedBy ":backend:appengineStop"
+}
